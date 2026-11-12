@@ -2,7 +2,11 @@
 """Generates index.html for the portfolio. Edit the data below, then run: python3 build.py"""
 from html import escape as e
 
-GH = "https://github.com/Githaiga701"
+# Change these two lines if the GitHub username or the site address changes.
+GITHUB_USER = "Githaiga701"
+SITE_URL = "https://githaiga701.github.io/"
+
+GH = f"https://github.com/{GITHUB_USER}"
 
 FEATURED = [
     dict(
@@ -23,10 +27,10 @@ FEATURED = [
         lead="I run this site end to end: development, hosting, admin tools, content and compliance.",
         did=[
             "Traced an 8.7 second Largest Contentful Paint to its causes and fixed it with code splitting, lazy loading, WebP images and cache headers.",
-            "Built a serverless back office on Vercel functions and Google Sheets that produces PDF invoices.",
+            "Built an online back office on Google Sheets that produces PDF invoices.",
             "Wrote the privacy policy and terms to comply with the Kenya Data Protection Act.",
         ],
-        stack="React, TypeScript, Vite, Tailwind CSS, Vercel, jsPDF",
+        stack="React, TypeScript, Vite, Tailwind CSS, jsPDF, Namecheap hosting",
         links=[("Visit the site", "https://buffaloplainsadventures.com"), ("View the code", f"{GH}/Buffalo-Plains-Adventures")],
     ),
     dict(
@@ -117,7 +121,7 @@ def featured_html():
         did = "".join(f"<li>{e(d)}</li>" for d in p["did"])
         links = f'<div class="card-links">{links_html(p["links"])}</div>' if p["links"] else ""
         out.append(f'''
-      <article class="glass feature" data-cats="{p["cats"]}">
+      <article class="glass feature reveal lift" data-cats="{p["cats"]}">
         <div class="feature-head">
           <p class="kind">{e(p["kind"])}</p>
           <h3>{e(p["title"])}</h3>
@@ -136,7 +140,7 @@ def projects_html():
     for title, cats, kind, text, stack, links in PROJECTS:
         l = f'<div class="card-links">{links_html(links)}</div>' if links else ""
         out.append(f'''
-      <article class="glass card" data-cats="{cats}">
+      <article class="glass card reveal lift tilt" data-cats="{cats}">
         <p class="kind">{e(kind)}</p>
         <h3>{e(title)}</h3>
         <p>{e(text)}</p>
@@ -149,7 +153,7 @@ def experience_html():
     return "".join(f'''
       <li class="role">
         <p class="when">{e(when)}</p>
-        <div class="glass role-card">
+        <div class="glass role-card reveal lift">
           <h3>{e(title)}</h3>
           <p class="org">{e(org)}</p>
           <p>{e(text)}</p>
@@ -158,7 +162,7 @@ def experience_html():
 
 def skills_html():
     return "".join(f'''
-      <div class="glass skill">
+      <div class="glass skill reveal lift">
         <h3>{e(name)}</h3>
         <ul>{"".join(f"<li>{e(i)}</li>" for i in items)}</ul>
       </div>''' for name, items in SKILLS)
@@ -168,7 +172,9 @@ html = (TEMPLATE
         .replace("{{FEATURED}}", featured_html())
         .replace("{{PROJECTS}}", projects_html())
         .replace("{{EXPERIENCE}}", experience_html())
-        .replace("{{SKILLS}}", skills_html()))
+        .replace("{{SKILLS}}", skills_html())
+        .replace("{{SITE_URL}}", SITE_URL)
+        .replace("{{GH}}", GH))
 head, body = html.split("<body>", 1)
 import re
 body = re.sub(r"(?<![\w/.@-])(M-Pesa|PTS-2)(?![\w-])", r'<span class="nb">\1</span>', body)
