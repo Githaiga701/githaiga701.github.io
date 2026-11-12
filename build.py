@@ -19,7 +19,7 @@ FEATURED = [
             "Unit, API and browser tests, and a packaging script for cPanel hosting.",
         ],
         stack="TypeScript, M-Pesa Daraja, Pesapal IPN, automated tests, cPanel",
-        links=[("View the code", f"{GH}/whizperzz")],
+        links=[("Visit the site", "https://whizperzdawntours.com"), ("View the code", f"{GH}/whizperzz")],
     ),
     dict(
         title="Buffalo Plains Adventures",
