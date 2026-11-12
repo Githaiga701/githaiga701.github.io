@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gideon Githaiga | Full-stack, infrastructure and security engineer in Nairobi</title>
+<meta name="description" content="Gideon Githaiga builds and runs web platforms for Kenyan businesses: booking systems, M-Pesa payments, infrastructure and security. Based in Nairobi, open to remote and on-site work.">
+<meta name="author" content="Gideon Githaiga Gitonga">
+<link rel="canonical" href="https://githaiga701.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gideon Githaiga | Full-stack, infrastructure and security engineer">
+<meta property="og:description" content="Booking systems, M-Pesa payments, infrastructure and security for Kenyan businesses.">
+<meta property="og:url" content="https://githaiga701.github.io/">
+<meta property="og:image" content="https://githaiga701.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#141a3a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gideon Githaiga Gitonga",
+  "alternateName": "Gideon Githaiga",
+  "url": "https://githaiga701.github.io/",
+  "jobTitle": "Full-stack, infrastructure and security engineer",
+  "email": "mailto:gitongagideon701@gmail.com",
+  "telephone": "+254796806058",
+  "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Multimedia University of Kenya" },
+  "sameAs": ["https://github.com/Githaiga701"],
+  "knowsAbout": ["Web development", "M-Pesa integration", "Linux administration", "Network engineering", "Cybersecurity"]
+}
+</script>
+<style>
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Figtree"; src: url("assets/fonts/figtree.woff2") format("woff2"); font-weight: 300 900; font-style: normal; font-display: swap; }
+
+:root {
+  --dusk: #141a3a;
+  --plum: #2c1b40;
+  --ivory: #f6f1e8;
+  --ivory-soft: rgba(246, 241, 232, .76);
+  --amber: #f2c078;
+  --amber-deep: #e0a04e;
+  --teal: #5fd0bd;
+  --ink: #1a1330;
+  --glass: rgba(255, 255, 255, .075);
+  --glass-strong: rgba(255, 255, 255, .11);
+  --edge: rgba(255, 255, 255, .17);
+  --edge-soft: rgba(255, 255, 255, .09);
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --wrap: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; color: var(--ivory); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  background: linear-gradient(160deg, var(--dusk) 0%, #1c1a44 38%, var(--plum) 100%) fixed;
+  background-color: var(--dusk);
+  min-height: 100vh; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--amber); }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 30; background: var(--ivory); color: var(--ink); padding: 10px 16px; border-radius: 10px; font-weight: 600; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+
+/* Light sources behind the glass */
+.sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.sky i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; will-change: transform; }
+.sky i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: -14vw; background: #e79a4d; animation: drift-a 38s ease-in-out infinite alternate; }
+.sky i:nth-child(2) { width: 40vw; height: 40vw; right: -10vw; top: 22vh; background: #2aa893; opacity: .42; animation: drift-b 46s ease-in-out infinite alternate; }
+.sky i:nth-child(3) { width: 44vw; height: 44vw; left: 24vw; bottom: -22vw; background: #b9456f; opacity: .4; animation: drift-a 52s ease-in-out infinite alternate-reverse; }
+@keyframes drift-a { to { transform: translate3d(6vw, 5vh, 0) scale(1.08); } }
+@keyframes drift-b { to { transform: translate3d(-7vw, -6vh, 0) scale(.94); } }
+
+/* Glass */
+.glass {
+  position: relative; isolation: isolate;
+  background: linear-gradient(145deg, var(--glass-strong), var(--glass) 55%);
+  border: 1px solid var(--edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 24px 60px -28px rgba(8, 6, 28, .75);
+  -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgba(38, 33, 78, .92); }
+}
+.glass::after { /* highlight that follows the pointer */
+  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .35s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 236, 205, .16), transparent 62%);
+}
+.glass:hover::after { opacity: 1; }
+
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+/* Navigation */
+.nav { position: sticky; top: 14px; z-index: 20; margin-top: 14px; }
+.nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px 10px 22px; border-radius: 999px; }
+.brand { font-family: var(--display); font-size: 1.2rem; font-weight: 560; color: var(--ivory); text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a { color: var(--ivory-soft); text-decoration: none; font-weight: 500; font-size: .98rem; padding: 9px 14px; border-radius: 999px; transition: color .2s, background .2s; }
+.nav-links a:hover { color: var(--ivory); background: rgba(255, 255, 255, .08); }
+.nav-links a.btn { color: var(--ink); }
+.nav-bar .nav-toggle { display: none; }
+.nb { white-space: nowrap; }
+
+/* Buttons and links */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 11px 22px; border-radius: 999px; font: 600 1rem var(--body); text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform .2s, background .2s, border-color .2s; }
+.btn-primary { background: linear-gradient(180deg, #f7cf93, var(--amber-deep)); color: var(--ink); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 10px 26px -12px rgba(242, 192, 120, .7); }
+.btn-primary:hover { background: linear-gradient(180deg, #fbdcae, #e9ad5f); transform: translateY(-1px); }
+.btn-ghost { background: rgba(255, 255, 255, .07); border-color: var(--edge); color: var(--ivory); }
+.btn-ghost:hover { background: rgba(255, 255, 255, .13); border-color: rgba(255, 255, 255, .3); }
+.text-link { color: var(--amber); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(242, 192, 120, .4); text-underline-offset: 4px; }
+.text-link:hover { text-decoration-color: var(--amber); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(48px, 9vw, 110px) 0 clamp(48px, 7vw, 90px); }
+.hello { font-size: 1.05rem; color: var(--amber); font-weight: 600; margin-bottom: 20px; }
+h1 { font-family: var(--display); font-weight: 420; font-size: clamp(2.35rem, 5.4vw, 4.4rem); line-height: 1.05; letter-spacing: -.015em; font-variation-settings: "opsz" 144; text-wrap: balance; }
+.lede { margin-top: 26px; max-width: 34em; font-size: clamp(1.08rem, 1.5vw, 1.22rem); color: var(--ivory-soft); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+.hero-side { display: grid; gap: 16px; justify-items: stretch; }
+.portrait { aspect-ratio: 4 / 5; border-radius: 32px; overflow: hidden; display: grid; place-items: center; }
+.portrait img { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: cover; }
+.portrait .mono { grid-area: 1 / 1; font-family: var(--display); font-style: italic; font-weight: 380; font-size: clamp(5rem, 11vw, 8.5rem); letter-spacing: -.06em; color: transparent; background: linear-gradient(160deg, #fff4de, var(--amber) 55%, #b97a3a); -webkit-background-clip: text; background-clip: text; display: none; padding-right: .08em; }
+.portrait.no-photo img { display: none; }
+.portrait.no-photo .mono { display: block; }
+.status { border-radius: 20px; padding: 16px 20px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: center; font-size: .98rem; }
+.status .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(95, 208, 189, .2); }
+.status strong { font-weight: 600; }
+.status span.where { grid-column: 2; color: var(--ivory-soft); }
+
+/* Sections */
+section { padding: clamp(44px, 7vw, 88px) 0; }
+h2 { font-family: var(--display); font-weight: 430; font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.1; letter-spacing: -.02em; font-variation-settings: "opsz" 120; text-wrap: balance; max-width: 18em; }
+.section-intro { margin-top: 16px; max-width: 40em; color: var(--ivory-soft); }
+h3 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; line-height: 1.2; letter-spacing: -.012em; }
+
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+.pillar { border-radius: 24px; padding: 28px; }
+.pillar p { margin-top: 12px; color: var(--ivory-soft); }
+
+/* Work */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.filters button { font: 600 .96rem var(--body); color: var(--ivory-soft); background: rgba(255, 255, 255, .06); border: 1px solid var(--edge-soft); border-radius: 999px; padding: 9px 18px; min-height: 42px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.filters button:hover { color: var(--ivory); border-color: var(--edge); }
+.filters button[aria-pressed="true"] { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+.count { margin-top: 14px; color: var(--ivory-soft); font-size: .95rem; }
+
+.features { display: grid; gap: 18px; margin-top: 22px; }
+.feature { border-radius: 28px; padding: clamp(24px, 3.4vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(20px, 4vw, 56px); }
+.feature h3 { font-size: clamp(1.6rem, 2.6vw, 2.15rem); font-weight: 460; margin-top: 6px; }
+.feature-lead { margin-top: 14px; color: var(--ivory-soft); }
+.kind { color: var(--amber); font-weight: 600; font-size: .95rem; }
+.did li { position: relative; padding-left: 22px; margin-bottom: 10px; }
+.did li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; border-radius: 3px; background: linear-gradient(135deg, #fbe1b6, var(--amber-deep)); }
+.stack { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--edge-soft); color: var(--ivory-soft); font-size: .95rem; }
+.card-links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; margin-top: 18px; }
+.card { border-radius: 20px; padding: 24px; display: flex; flex-direction: column; }
+.card h3 { margin-top: 6px; }
+.card h3 + p { margin-top: 10px; color: var(--ivory-soft); font-size: 1rem; }
+.card .stack { margin-top: auto; padding-top: 14px; }
+.card h3 + p { margin-bottom: 16px; }
+[hidden] { display: none !important; }
+
+.bench { margin-top: 18px; border-radius: 20px; padding: 22px 24px; color: var(--ivory-soft); }
+.bench strong { color: var(--ivory); font-weight: 600; }
+
+/* Experience */
+.roles { margin-top: 36px; display: grid; gap: 16px; position: relative; }
+.role { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: start; }
+.when { padding-top: 24px; font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--amber); }
+.role-card { border-radius: 20px; padding: 24px 26px; }
+.org { color: var(--ivory-soft); font-weight: 500; margin-top: 4px; }
+.org + p { margin-top: 12px; color: var(--ivory-soft); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+.skill { border-radius: 20px; padding: 24px; }
+.skill ul { margin-top: 14px; display: grid; gap: 7px; color: var(--ivory-soft); font-size: 1rem; }
+
+/* Education */
+.edu { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; margin-top: 36px; align-items: stretch; }
+.edu-list { border-radius: 24px; padding: 8px 28px; }
+.edu-list li { padding: 20px 0; border-bottom: 1px solid var(--edge-soft); }
+.edu-list li:last-child { border-bottom: 0; }
+.edu-list h3 { font-size: 1.25rem; }
+.edu-list p { color: var(--ivory-soft); margin-top: 4px; }
+.quote { border-radius: 24px; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+.quote blockquote { margin: 0; font-family: var(--display); font-style: italic; font-weight: 380; font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.3; }
+.quote figcaption { margin-top: 18px; color: var(--ivory-soft); font-size: .98rem; }
+.langs { margin-top: 18px; border-radius: 20px; padding: 20px 24px; color: var(--ivory-soft); }
+.langs strong { color: var(--ivory); font-weight: 600; }
+
+/* Contact */
+.contact { border-radius: 32px; padding: clamp(28px, 5vw, 60px); text-align: left; }
+.contact h2 { max-width: 15em; }
+.contact p { margin-top: 16px; max-width: 36em; color: var(--ivory-soft); }
+.contact .cta { margin-top: 30px; }
+
+footer { padding: 28px 0 48px; color: var(--ivory-soft); font-size: .95rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+footer a { color: var(--ivory-soft); }
+
+/* Small screens */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); align-items: end; }
+  .pillars, .skills, .edu { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: 1fr; }
+  .role { grid-template-columns: 1fr; gap: 8px; }
+  .when { padding-top: 6px; }
+}
+@media (max-width: 760px) {
+  .nav-bar { flex-wrap: wrap; border-radius: 26px; padding: 10px 12px 10px 20px; }
+  .nav-bar .nav-toggle { display: inline-flex; min-height: 42px; padding: 8px 18px; }
+  .nav-links { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; padding: 6px 0 8px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 10px; }
+  .nav-links a.btn { margin-top: 6px; }
+  .cards { grid-template-columns: 1fr; }
+  .hero-side { grid-template-columns: 1fr; }
+  .portrait { max-width: 240px; }
+  .cta .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sky i { animation: none; }
+  .btn, .glass::after { transition: none; }
+}
+@media print {
+  .sky, .nav, .filters, .count { display: none; }
+  body { background: #fff; color: #111; }
+  .glass { background: none; border-color: #ccc; box-shadow: none; backdrop-filter: none; }
+  :root { --ivory: #111; --ivory-soft: #333; --amber: #7a4a0c; }
+}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
+<a class="skip" href="#work">Skip to the work</a>
+
+<div class="nav wrap">
+  <nav class="glass nav-bar" aria-label="Main">
+    <a class="brand" href="#top">Gideon Githaiga</a>
+    <button class="btn btn-ghost nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="assets/Gideon_Githaiga_CV.pdf" download>Download CV</a>
+    </div>
+  </nav>
+</div>
+
+<main id="top">
+  <header class="hero wrap">
+    <div>
+      <p class="hello">Gideon Githaiga, engineer in Nairobi</p>
+      <h1>I build the systems Kenyan businesses run on, then keep them fast, paid and secure.</h1>
+      <p class="lede">Booking platforms, <span class="nb">M-Pesa</span> payments, servers, networks and the security work behind them. I take a problem from the first message to the fix, and I write it down so it stays fixed.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#work">See the work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="glass portrait">
+        <img src="assets/gideon.jpg" alt="Portrait of Gideon Githaiga" width="800" height="1000" onerror="this.parentNode.classList.add('no-photo')">
+        <span class="mono" aria-hidden="true">GG</span>
+      </div>
+      <div class="glass status">
+        <span class="dot" aria-hidden="true"></span><strong>Open to new work</strong>
+        <span class="where">Remote or on-site. Nairobi, UTC+3.</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="wrap" aria-labelledby="about-h">
+    <h2 id="about-h">One engineer for the whole stack, from the checkout page to the firewall.</h2>
+    <p class="section-intro">I hold a BSc in Information Technology and a Security Engineer certificate with Distinction. Since 2022 I have supported and built for businesses in Kenya, which means I have had to do all three of these jobs, often in the same week.</p>
+    <div class="pillars">
+      <div class="glass pillar">
+        <h3>Build</h3>
+        <p>Web platforms in TypeScript, React, Next.js and PHP, with databases, user roles, admin tools and payments by <span class="nb">M-Pesa</span>, Pesapal and card.</p>
+      </div>
+      <div class="glass pillar">
+        <h3>Run</h3>
+        <p>Linux and Windows servers, networks, firewalls, VPNs and backups. I tune slow sites, document systems and support the people who use them.</p>
+      </div>
+      <div class="glass pillar">
+        <h3>Secure</h3>
+        <p>Threat hunting in Splunk, vulnerability scanning, hardening, access control and compliance with the Kenya Data Protection Act.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <p class="section-intro">Client platforms, my own products and the labs where I test things until they break. Filter by the kind of work you care about.</p>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="web" aria-pressed="false">Web</button>
+      <button type="button" data-filter="payments" aria-pressed="false">Payments</button>
+      <button type="button" data-filter="infrastructure" aria-pressed="false">Infrastructure</button>
+      <button type="button" data-filter="security" aria-pressed="false">Security</button>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="features">
+      <article class="glass feature" data-cats="web payments">
+        <div class="feature-head">
+          <p class="kind">Booking platform</p>
+          <h3>Whizperz Tours &amp; Safaris</h3>
+          <p class="feature-lead">A tour company needed to take bookings and money online without hiring a developer for every change.</p>
+        </div>
+        <div class="feature-body">
+          <ul class="did"><li>Five ways to pay in one checkout: <span class="nb">M-Pesa</span>, Pesapal, iPOS, Unipesa and crypto, with quotes, refunds and emailed receipts.</li><li>An admin where staff add journeys, set prices, upload photos and manage user logins.</li><li>Unit, API and browser tests, and a packaging script for cPanel hosting.</li></ul>
+          <p class="stack"><span class="sr-only">Built with: </span>TypeScript, <span class="nb">M-Pesa</span> Daraja, Pesapal IPN, automated tests, cPanel</p>
+          <div class="card-links"><a class="text-link" href="https://github.com/Githaiga701/whizperzz" target="_blank" rel="noopener">View the code<span class="sr-only"> (opens in a new tab)</span></a></div>
+        </div>
+      </article>
+      <article class="glass feature" data-cats="web">
+        <div class="feature-head">
+          <p class="kind">Live safari booking site</p>
+          <h3>Buffalo Plains Adventures</h3>
+          <p class="feature-lead">I run this site end to end: development, hosting, admin tools, content and compliance.</p>
+        </div>
+        <div class="feature-body">
+          <ul class="did"><li>Traced an 8.7 second Largest Contentful Paint to its causes and fixed it with code splitting, lazy loading, WebP images and cache headers.</li><li>Built a serverless back office on Vercel functions and Google Sheets that produces PDF invoices.</li><li>Wrote the privacy policy and terms to comply with the Kenya Data Protection Act.</li></ul>
+          <p class="stack"><span class="sr-only">Built with: </span>React, TypeScript, Vite, Tailwind CSS, Vercel, jsPDF</p>
+          <div class="card-links"><a class="text-link" href="https://buffaloplainsadventures.com" target="_blank" rel="noopener">Visit the site<span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="https://github.com/Githaiga701/Buffalo-Plains-Adventures" target="_blank" rel="noopener">View the code<span class="sr-only"> (opens in a new tab)</span></a></div>
+        </div>
+      </article>
+      <article class="glass feature" data-cats="infrastructure">
+        <div class="feature-head">
+          <p class="kind">Forecourt automation</p>
+          <h3>Damani FuelTech</h3>
+          <p class="feature-lead">A fuel station platform built around the Technotrade <span class="nb">PTS-2</span> controller, with a companion app on Google Play.</p>
+        </div>
+        <div class="feature-body">
+          <ul class="did"><li>Wrote the integration reference: dispensers, tank gauges, leak sensors, payments, RFID, CCTV, GPS and KRA eTIMS.</li><li>Built a Playwright crawler that maps every screen of the multi-branch web app.</li><li>Turned that map into training and troubleshooting guides for station staff.</li></ul>
+          <p class="stack"><span class="sr-only">Built with: </span>Technotrade <span class="nb">PTS-2</span>, Playwright, technical writing</p>
+          
+        </div>
+      </article>
+    </div>
+    <div class="cards">
+      <article class="glass card" data-cats="web">
+        <p class="kind">Fleet and delivery platform</p>
+        <h3>LogisticsWeb</h3>
+        <p>Drivers, vehicles, clients and jobs in one system, with assignment conflict checks, a full audit trail and a one-tap mobile view for drivers.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>React, Fastify, PostgreSQL, Prisma, Redis</p>
+        <div class="card-links"><a class="text-link" href="https://github.com/Githaiga701/LogisticsWeb" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="web">
+        <p class="kind">Rental marketplace for Kenya</p>
+        <h3>Vehicle Rental Platform</h3>
+        <p>Owners list vehicles and renters book them. Phone OTP login, KYC document review, owner approvals, ratings and driver payment confirmation links.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Next.js, NestJS, PostgreSQL, Turborepo</p>
+        <div class="card-links"><a class="text-link" href="https://github.com/Githaiga701/vehiclerentalservice" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="payments infrastructure">
+        <p class="kind">Hardware payment bridge, in development</p>
+        <h3><span class="nb">M-Pesa</span> water tap</h3>
+        <p>An ESP32 and relay bridge that lets a coin-operated community tap release 20 litres once <span class="nb">M-Pesa</span> confirms payment.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>ESP32, <span class="nb">M-Pesa</span> Daraja</p>
+        
+      </article>
+      <article class="glass card" data-cats="payments">
+        <p class="kind">Server-side payments</p>
+        <h3><span class="nb">M-Pesa</span> STK Push integration</h3>
+        <p>A Daraja <span class="nb">M-Pesa</span> Express flow with a callback endpoint, sandbox and live modes, and credentials kept on the server.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Next.js, TypeScript, Daraja API</p>
+        <div class="card-links"><a class="text-link" href="https://github.com/Githaiga701/Portifolio" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="web">
+        <p class="kind">Personal operating system</p>
+        <h3>OmniLife OS</h3>
+        <p>A dashboard for projects and finances, with a database fallback that keeps the app building and rendering without a connection string.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Next.js, Prisma, PostgreSQL</p>
+        <div class="card-links"><a class="text-link" href="https://omnilife-os.vercel.app" target="_blank" rel="noopener">Live<span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="https://github.com/Githaiga701/omnilife-os" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="web">
+        <p class="kind">Company website</p>
+        <h3>Urban Digital Technologies</h3>
+        <p>Designed and built the site for an IT services provider, with a serverless contact form, email delivery and reCAPTCHA v3 spam protection.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Next.js, Tailwind CSS, SendGrid</p>
+        <div class="card-links"><a class="text-link" href="https://urban-dig-tech.vercel.app" target="_blank" rel="noopener">Live<span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="https://github.com/Githaiga701/UrbanDigTech" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="web">
+        <p class="kind">Membership system</p>
+        <h3>Gym Management System</h3>
+        <p>Members, subscriptions and records for gym owners and managers.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>PHP, MySQL</p>
+        <div class="card-links"><a class="text-link" href="https://github.com/Githaiga701/gym_management" target="_blank" rel="noopener">Code<span class="sr-only"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="glass card" data-cats="web security">
+        <p class="kind">Website audit</p>
+        <h3>Smart Applications International</h3>
+        <p>Audited the company&#x27;s online shop and delivered a written report with findings ranked by priority.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Audit, reporting</p>
+        
+      </article>
+      <article class="glass card" data-cats="security">
+        <p class="kind">Incident investigation</p>
+        <h3>Cerber ransomware threat hunt</h3>
+        <p>Followed a ransomware attack through the Splunk BOTSv1 dataset, from the first infected machine to the encrypted file server, and wrote the incident timeline.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Splunk, SPL</p>
+        
+      </article>
+      <article class="glass card" data-cats="security">
+        <p class="kind">Vulnerability study</p>
+        <h3>Log4Shell analysis</h3>
+        <p>Scored the Log4Shell vulnerability with CVSS and proposed a SIEM set-up to detect attempts to exploit it.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>CVSS, SIEM design</p>
+        
+      </article>
+      <article class="glass card" data-cats="security">
+        <p class="kind">Scanning utility</p>
+        <h3>PyScanner</h3>
+        <p>A Python tool for vulnerability enumeration and scanning, built for automation and readable results.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Python</p>
+        
+      </article>
+      <article class="glass card" data-cats="infrastructure">
+        <p class="kind">Server estate migration</p>
+        <h3>Windows Server 2022 migration</h3>
+        <p>Moved a simulated organisation to Windows Server 2022: Active Directory, DNS, DHCP, IIS, WSUS and a MailEnable mail server, with nine documentation deliverables.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>Windows Server, Active Directory, IIS</p>
+        
+      </article>
+      <article class="glass card" data-cats="infrastructure">
+        <p class="kind">Network lab</p>
+        <h3>Multi-site network</h3>
+        <p>Two sites joined by site-to-site VPN, with pfSense firewalls, HAProxy SSL offloading, Hyper-V and Active Directory.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>pfSense, HAProxy, Hyper-V</p>
+        
+      </article>
+      <article class="glass card" data-cats="infrastructure">
+        <p class="kind">Performance testing</p>
+        <h3>Storage and delivery labs</h3>
+        <p>TrueNAS and iSCSI throughput tests at 1 and 10 Gbps, a multi-node Hadoop cluster on EC2, and CDN origin tests at up to 100,000 concurrent streams.</p>
+        <p class="stack"><span class="sr-only">Built with: </span>TrueNAS, iSCSI, AWS EC2</p>
+        
+      </article>
+    </div>
+    <p class="glass bench"><strong>In planning:</strong> a billing platform for internet providers running hotspots and home connections in Kenya, and a property management system for Kenyan landlords and agents.</p>
+  </section>
+
+  <section class="wrap" id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <ol class="roles">
+      <li class="role">
+        <p class="when">2024 to now</p>
+        <div class="glass role-card">
+          <h3>Infrastructure and Security Engineer</h3>
+          <p class="org">Freelance, Kenya</p>
+          <p>I build and run web platforms for Kenyan businesses: booking systems, payment integrations, performance work, documentation and security reviews. Clients include Buffalo Plains Adventures, Whizperz Tours &amp; Safaris, Damani FuelTech, Urban Digital Technologies and Smart Applications International.</p>
+        </div>
+      </li>
+      <li class="role">
+        <p class="when">2022 to 2024</p>
+        <div class="glass role-card">
+          <h3>IT Support and Systems Consultant</h3>
+          <p class="org">Freelance, Ongata Rongai</p>
+          <p>Day-to-day support for small businesses and individuals, including Zaaabel and Atlantis Dubai: computers, printers, networks, email and Microsoft 365. Set up LANs, Wi-Fi, firewalls and backups, and wrote handover notes so clients could handle routine fixes.</p>
+        </div>
+      </li>
+      <li class="role">
+        <p class="when">May to August 2023</p>
+        <div class="glass role-card">
+          <h3>ICT Industrial Attachment</h3>
+          <p class="org">County Government of Nyeri, Department of Transport, Public Works, Infrastructure and Energy</p>
+          <p>Repaired and maintained ICT equipment, assembled system units, installed operating systems and software, ran backups and updates, and networked office systems.</p>
+        </div>
+      </li>
+      <li class="role">
+        <p class="when">2022</p>
+        <div class="glass role-card">
+          <h3>Tech Consultant</h3>
+          <p class="org">Riset Software &amp; Systems, Kitengela</p>
+          <p>Advised clients on software and systems, supported deployments and handled first-line technical questions.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap" id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills and tools</h2>
+    <div class="skills">
+      <div class="glass skill">
+        <h3>Web and software</h3>
+        <ul><li>TypeScript and JavaScript</li><li>React, Next.js, Vite</li><li>NestJS, Fastify, Node.js</li><li>PHP, Python, SQL</li><li>PostgreSQL, MySQL, Prisma, Redis</li><li>Tailwind CSS, shadcn/ui</li></ul>
+      </div>
+      <div class="glass skill">
+        <h3>Payments</h3>
+        <ul><li><span class="nb">M-Pesa</span> Daraja, STK Push and callbacks</li><li>Pesapal and IPN registration</li><li>iPOS, Unipesa, crypto checkout</li><li>Refunds, quotes and receipts</li><li>PDF invoices</li></ul>
+      </div>
+      <div class="glass skill">
+        <h3>Systems and networks</h3>
+        <ul><li>Linux administration, Bash</li><li>Windows Server 2019 and 2022</li><li>Active Directory, DNS, DHCP, IIS, WSUS</li><li>pfSense, HAProxy, VPN, VLANs</li><li>Proxmox, VMware, Hyper-V</li><li>TrueNAS, iSCSI, AWS EC2</li></ul>
+      </div>
+      <div class="glass skill">
+        <h3>Security</h3>
+        <ul><li>Splunk threat hunting</li><li>Vulnerability scanning</li><li>CVSS scoring and SIEM design</li><li>System hardening and access control</li><li>Kenya Data Protection Act compliance</li></ul>
+      </div>
+      <div class="glass skill">
+        <h3>Delivery</h3>
+        <ul><li>Vercel, Docker, cPanel</li><li>Git and GitHub</li><li>Turborepo and pnpm monorepos</li><li>Unit, API and browser tests</li><li>Playwright</li><li>Core Web Vitals tuning</li></ul>
+      </div>
+      <div class="glass skill">
+        <h3>Support and writing</h3>
+        <ul><li>Hardware and software troubleshooting</li><li>Microsoft 365</li><li>User training</li><li>Technical documentation and user guides</li><li>Website and social media content</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="education" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education and certifications</h2>
+    <div class="edu">
+      <ul class="glass edu-list">
+        <li><h3>BSc Information Technology</h3><p>Second Class Honours, Upper Division. Multimedia University of Kenya, 2019 to 2024.</p></li>
+        <li><h3>Security Engineer</h3><p>Distinction. CyberShujaa, 2024.</p></li>
+        <li><h3>Certificate IV in Information Technology</h3><p>TAFE, in progress.</p></li>
+        <li><h3>Google IT Support Fundamentals</h3><p>Coursera, 2023.</p></li>
+      </ul>
+      <figure class="glass quote" style="margin:0">
+        <blockquote>&ldquo;Hard working, team player and works within minimum supervision.&rdquo;</blockquote>
+        <figcaption>Chief Officer, Department of Transport, Public Works, Infrastructure and Energy, County Government of Nyeri. From a recommendation letter, September 2023.</figcaption>
+      </figure>
+    </div>
+    <p class="glass langs"><strong>Languages:</strong> English (fluent), Kiswahili (native), German (beginner).</p>
+  </section>
+
+  <section class="wrap" id="contact" aria-labelledby="contact-h">
+    <div class="glass contact">
+      <h2 id="contact-h">Have a system that needs building, fixing or securing?</h2>
+      <p>Tell me what you are working on and what is in the way. I will come back with how I would approach it.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:gitongagideon701@gmail.com">Email gitongagideon701@gmail.com</a>
+        <a class="btn btn-ghost" href="https://wa.me/254796806058" target="_blank" rel="noopener">Message on WhatsApp<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-ghost" href="tel:+254796806058">Call +254 796 806 058</a>
+        <a class="btn btn-ghost" href="https://github.com/Githaiga701" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>&copy; <span id="year">2026</span> Gideon Githaiga Gitonga</span>
+  <a href="#top">Back to top</a>
+</footer>
+
+<script>
+(function () {
+  // Mobile menu
+  var toggle = document.querySelector('.nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+  links.addEventListener('click', function (ev) {
+    if (ev.target.tagName === 'A' && links.classList.contains('open')) toggle.click();
+  });
+
+  // Project filter
+  var items = [].slice.call(document.querySelectorAll('[data-cats]'));
+  var buttons = [].slice.call(document.querySelectorAll('.filters button'));
+  var count = document.getElementById('count');
+  function apply(filter) {
+    var shown = 0;
+    items.forEach(function (el) {
+      var match = filter === 'all' || el.getAttribute('data-cats').split(' ').indexOf(filter) > -1;
+      el.hidden = !match; if (match) shown++;
+    });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter); });
+    count.textContent = 'Showing ' + shown + (shown === 1 ? ' project' : ' projects');
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); }); });
+  apply('all');
+
+  // Highlight that follows the pointer across glass
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('pointermove', function (ev) {
+      var el = ev.target.closest ? ev.target.closest('.glass') : null;
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
